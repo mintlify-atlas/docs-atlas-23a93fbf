@@ -1,0 +1,60 @@
+{
+  "projectType": "general",
+  "projectName": "Quick Select",
+  "projectDescription": "Quickly select items in any Obsidian modal using keyboard shortcuts to supercharge your workflow.",
+  "theme": "palm",
+  "primaryColor": "#7c3aed",
+  "lightColor": "#a78bfa",
+  "darkColor": "#6d28d9",
+  "navigation": {
+    "groups": [
+      {
+        "group": "Get Started",
+        "pages": [
+          "introduction",
+          "installation",
+          "quickstart"
+        ]
+      },
+      {
+        "group": "Guides",
+        "pages": [
+          "guides/basic-usage",
+          "guides/modal-types",
+          "guides/configuration",
+          "guides/tips-and-tricks"
+        ]
+      },
+      {
+        "group": "Reference",
+        "pages": [
+          "reference/settings",
+          "reference/keyboard-shortcuts",
+          "reference/troubleshooting"
+        ]
+      },
+      {
+        "group": "Development",
+        "pages": [
+          "development/contributing",
+          "development/changelog"
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Quick item selection in any Obsidian modal using Mod+Number shortcuts",
+    "Works with Quick Switcher, Command Palette, Search, Tags, and all other modals",
+    "Configurable modifier key (Meta/Cmd, Ctrl, or Alt)",
+    "Multiple counter transition styles (None, Fade, Slide, Permanent)",
+    "Support for popout windows",
+    "Filters group items intelligently"
+  ],
+  "publicApiSurface": [
+    "QuickOpen (main plugin class)",
+    "QuickOpenSettings interface (modifierKey, transitionStyle)",
+    "QuickOpenSettingTab (settings UI)",
+    "DEFAULT_SETTINGS",
+    "Keyboard shortcuts: Mod+1 through Mod+9"
+  ]
+}
