@@ -1,0 +1,311 @@
+---
+title: "Configuration"
+description: "Customize Quick Select settings to match your workflow"
+---
+
+## Accessing Settings
+
+To configure Quick Select:
+
+<Steps>
+  <Step title="Open Settings">
+    Click the Settings icon (gear) or press `Cmd/Ctrl + ,`
+  </Step>
+  
+  <Step title="Navigate to Quick Select">
+    Scroll down to "Community plugins" section and find "Quick Select"
+  </Step>
+  
+  <Step title="Adjust settings">
+    Configure your preferred modifier key and transition style
+  </Step>
+</Steps>
+
+## Available Settings
+
+Quick Select provides two main configuration options:
+
+### Modifier Key
+
+Choose which key activates Quick Select numbering.
+
+<ParamField path="modifierKey" type="string" default="metaKey">
+  The keyboard modifier that must be held to trigger Quick Select.
+  
+  **Options:**
+  - `metaKey` - Command (macOS) / Windows key (Windows) / Super (Linux)
+  - `ctrlKey` - Control key (all platforms)
+  - `altKey` - Alt/Option key (all platforms)
+</ParamField>
+
+#### Platform Behavior
+
+<Tabs>
+  <Tab title="macOS">
+    - **metaKey**: Command (⌘) key
+    - **ctrlKey**: Control (⌃) key
+    - **altKey**: Option (⌥) key
+    
+    **Recommended**: `metaKey` (Command)
+  </Tab>
+  
+  <Tab title="Windows">
+    - **metaKey**: Windows key
+    - **ctrlKey**: Control key
+    - **altKey**: Alt key
+    
+    **Recommended**: `ctrlKey` (Control)
+  </Tab>
+  
+  <Tab title="Linux">
+    - **metaKey**: Super key
+    - **ctrlKey**: Control key
+    - **altKey**: Alt key
+    
+    **Recommended**: `ctrlKey` (Control)
+  </Tab>
+</Tabs>
+
+<Note>
+  The default `metaKey` setting automatically maps to Command on macOS and Ctrl on Windows/Linux, providing a consistent cross-platform experience.
+</Note>
+
+### Counter Transition Style
+
+Control how the numbered counters appear and disappear.
+
+<ParamField path="transitionStyle" type="string" default="slide">
+  The visual transition effect for Quick Select counters.
+  
+  **Options:**
+  - `none` - Counters appear instantly without animation
+  - `fade` - Counters fade in/out smoothly
+  - `slide` - Counters slide in from the right (default)
+  - `permanent` - Counters are always visible
+</ParamField>
+
+#### Transition Styles Explained
+
+<Accordion title="None - Instant Appearance">
+  **Description**: Counters appear immediately when you press the modifier key with no animation.
+  
+  **Best for**:
+  - Users who prefer minimal visual effects
+  - Slower computers where animations may lag
+  - Accessibility needs requiring instant feedback
+  
+  **CSS Behavior**: Sets opacity to 1 when modifier is pressed.
+</Accordion>
+
+<Accordion title="Fade - Smooth Opacity Transition">
+  **Description**: Counters gradually fade into view over 200ms with an ease-in timing function.
+  
+  **Best for**:
+  - Users who prefer subtle animations
+  - Clean, professional appearance
+  - Minimal distraction from modal content
+  
+  **CSS Behavior**: Transitions opacity from 0 to 1 over 200ms.
+</Accordion>
+
+<Accordion title="Slide - Animated Entry (Default)">
+  **Description**: Counters slide in from off-screen (right side) with a smooth animation.
+  
+  - Slide out: 100ms ease-out when releasing modifier
+  - Slide in: 200ms ease-in when pressing modifier
+  
+  **Best for**:
+  - Default experience for most users
+  - Clear visual indication of activation
+  - Satisfying tactile feedback
+  
+  **CSS Behavior**: Transitions from `right: -50px` to `right: var(--quick-select-inset)` with opacity.
+</Accordion>
+
+<Accordion title="Permanent - Always Visible">
+  **Description**: Counters are always displayed without requiring the modifier key.
+  
+  **Best for**:
+  - Users who primarily use Quick Select
+  - Learning the plugin (see numbers while typing)
+  - Accessibility - no need to hold modifier
+  - Touch-based workflows
+  
+  **CSS Behavior**: Counters rendered as static elements with `position: relative` and `opacity: 1`.
+  
+  <Warning>
+    Permanent mode shows numbers in all modals all the time. This may feel cluttered if you don't use Quick Select frequently.
+  </Warning>
+</Accordion>
+
+## Default Settings
+
+Here are the default settings as defined in the source code:
+
+```typescript
+export const DEFAULT_SETTINGS: QuickOpenSettings = {
+  modifierKey: "metaKey",
+  transitionStyle: "slide",
+};
+```
+
+## Settings Interface
+
+The settings are defined with TypeScript types:
+
+```typescript
+type modOptions = "metaKey" | "ctrlKey" | "altKey";
+export type transitionOptions = "none" | "fade" | "slide" | "permanent";
+
+export interface QuickOpenSettings {
+  modifierKey: modOptions;
+  transitionStyle: transitionOptions;
+}
+```
+
+## Configuration Examples
+
+<CodeGroup>
+```json Windows User
+{
+  "modifierKey": "ctrlKey",
+  "transitionStyle": "slide"
+}
+```
+
+```json macOS Power User
+{
+  "modifierKey": "metaKey",
+  "transitionStyle": "permanent"
+}
+```
+
+```json Minimal Animations
+{
+  "modifierKey": "metaKey",
+  "transitionStyle": "none"
+}
+```
+
+```json Accessibility Focused
+{
+  "modifierKey": "altKey",
+  "transitionStyle": "permanent"
+}
+```
+</CodeGroup>
+
+## Visual Customization
+
+Quick Select uses CSS custom properties for spacing:
+
+```css
+body {
+  --quick-select-initial: var(--size-4-1);
+  --quick-select-inset: var(--size-4-2);
+}
+```
+
+These control the positioning of counters within modals and can be overridden in custom CSS snippets.
+
+### Counter Styling
+
+The counters are styled with:
+
+- **Color**: `var(--text-muted)` - matches Obsidian's muted text color
+- **Background**: `var(--background-primary-alt)` - subtle background (except permanent mode)
+- **Font Size**: `0.8em` - slightly smaller than modal text
+- **Border Radius**: `4px` - rounded corners
+
+<Tip>
+  You can customize counter appearance further using CSS snippets. Target the class `.suggestion-item::after` in your custom CSS.
+</Tip>
+
+## Advanced Configuration
+
+While Quick Select only exposes two settings in the UI, advanced users can modify behavior through CSS:
+
+### Custom Counter Positioning
+
+```css
+/* Adjust counter spacing */
+body {
+  --quick-select-initial: 10px;
+  --quick-select-inset: 15px;
+}
+```
+
+### Custom Counter Colors
+
+```css
+/* Make counters more prominent */
+.suggestion-item:nth-child(-n+9 of :not(.mod-group))::after {
+  color: var(--text-accent);
+  background-color: var(--interactive-accent);
+  font-weight: 600;
+}
+```
+
+### Adjust Animation Speed
+
+```css
+/* Faster slide animation */
+.quick-select-transition-slide .suggestion-item:nth-child(-n+9 of :not(.mod-group))::after {
+  transition: all 50ms ease-out;
+}
+```
+
+<Note>
+  CSS customizations require creating a CSS snippet in Obsidian's snippets folder and enabling it in Appearance settings.
+</Note>
+
+## Troubleshooting Settings
+
+<AccordionGroup>
+  <Accordion title="Modifier key not working">
+    **Problem**: Pressing modifier + number doesn't select items.
+    
+    **Solutions**:
+    1. Check if another plugin or system shortcut is using the same key combination
+    2. Try changing to a different modifier key in settings
+    3. Restart Obsidian after changing settings
+    4. Check if the modal is actually a Quick Select-compatible modal type
+  </Accordion>
+  
+  <Accordion title="Counters not appearing">
+    **Problem**: Numbers don't show up when holding modifier key.
+    
+    **Solutions**:
+    1. Try setting transition style to "permanent" to see if counters work at all
+    2. Check if custom CSS snippets are interfering
+    3. Disable other plugins to check for conflicts
+    4. Try in a different modal (Quick Switcher is most reliable for testing)
+  </Accordion>
+  
+  <Accordion title="Animations feel sluggish">
+    **Problem**: Transition animations are laggy or choppy.
+    
+    **Solutions**:
+    1. Change transition style to "none" for instant appearance
+    2. Check system performance and close resource-heavy apps
+    3. Try a different transition style (fade is lighter than slide)
+  </Accordion>
+</AccordionGroup>
+
+## Resetting to Defaults
+
+To reset Quick Select settings to defaults:
+
+1. Open Settings → Quick Select
+2. Set **Modifier key** to `Meta`
+3. Set **Counter transition style** to `Slide`
+
+Alternatively, you can manually edit the plugin data file (advanced users only):
+
+```bash
+# Location: .obsidian/plugins/quick-select/data.json
+{
+  "modifierKey": "metaKey",
+  "transitionStyle": "slide"
+}
+```

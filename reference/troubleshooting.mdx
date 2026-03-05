@@ -1,0 +1,198 @@
+---
+title: Troubleshooting
+description: Common issues and solutions for Quick Select
+---
+
+## Common Issues
+
+<Accordion title="Shortcuts not working when I press Mod+Number">
+  **Possible causes:**
+  
+  1. **Modifier key not held down** - You must hold the modifier key (Cmd/Win/Ctrl/Alt) while pressing the number key. Pressing them sequentially won't work.
+  
+  2. **Wrong modifier key** - Check your settings to confirm which modifier key is configured. Go to **Settings → Quick Select → Modifier key**.
+  
+  3. **System shortcuts conflicting** - On Windows, Win+1 through Win+9 are used to launch taskbar applications. Try switching to Ctrl or Alt as your modifier key.
+  
+  4. **Plugin not loaded** - Verify Quick Select is enabled in **Settings → Community plugins**.
+  
+  5. **No modal open** - Shortcuts only work when a modal or suggestion popup is active. Try opening the Quick Open modal (Ctrl/Cmd+O) first.
+  
+  **Solution:**
+  
+  ```
+  1. Open Settings → Quick Select
+  2. Change "Modifier key" to "Control" or "Alt"
+  3. Open any modal (e.g., Cmd/Ctrl+O)
+  4. Hold Ctrl (or Alt) and press 1
+  ```
+</Accordion>
+
+<Accordion title="Numbered counters not appearing next to items">
+  **Possible causes:**
+  
+  1. **Modifier key not pressed** - Counters only appear when you hold down the configured modifier key (unless transition style is set to "permanent").
+  
+  2. **Transition style set to "none"** - With this setting, counters still function but may appear/disappear too quickly to notice.
+  
+  3. **CSS theme conflict** - Some custom themes may hide or obscure the counter elements.
+  
+  4. **Transition delay** - There's a 150ms delay before counters appear (see `main.ts:288`).
+  
+  **Solution:**
+  
+  Try setting transition style to "permanent" to always show counters:
+  
+  ```
+  1. Open Settings → Quick Select
+  2. Set "Counter transition style" to "Permanent"
+  3. Counters should now always be visible in modals
+  ```
+  
+  If counters still don't appear, check for theme conflicts by temporarily switching to Obsidian's default theme.
+</Accordion>
+
+<Accordion title="Conflicts with other plugins or hotkeys">
+  **Possible causes:**
+  
+  1. **Another plugin using the same shortcuts** - Some plugins may register Mod+Number shortcuts globally.
+  
+  2. **Custom hotkeys configured** - Check **Settings → Hotkeys** for conflicting shortcuts.
+  
+  3. **System-level shortcuts** - Operating system shortcuts take precedence over Obsidian.
+  
+  **Solution:**
+  
+  ```
+  1. Open Settings → Hotkeys
+  2. Search for shortcuts using numbers (1-9)
+  3. Remove or reassign conflicting hotkeys
+  4. Change Quick Select modifier key if needed
+  ```
+  
+  <Note>
+    Quick Select uses Obsidian's Scope API to register shortcuts only when modals are open, minimizing conflicts. However, some plugins may use global shortcuts that override Quick Select.
+  </Note>
+</Accordion>
+
+<Accordion title="Not working in popout windows">
+  **Expected behavior:**
+  
+  Quick Select fully supports popout windows. The plugin detects popout windows and initializes keyboard listeners for them (see `main.ts:311-322`).
+  
+  **If not working:**
+  
+  1. **Popout window opened before plugin loaded** - Try closing and reopening the popout window.
+  
+  2. **Window focus issues** - Ensure the popout window has keyboard focus.
+  
+  **Solution:**
+  
+  ```
+  1. Close any popout windows
+  2. Reload Obsidian (Ctrl/Cmd+R)
+  3. Re-open popout windows
+  4. Try Quick Select shortcuts in the popout window
+  ```
+  
+  The plugin listens for `layout-change` events and automatically initializes support for new popout windows.
+</Accordion>
+
+<Accordion title="Shortcuts stop working after some time">
+  **Possible causes:**
+  
+  1. **Scope not cleaned up properly** - If a modal closes unexpectedly, the keyboard scope may not be removed.
+  
+  2. **Plugin error** - Check the Developer Console (Ctrl/Cmd+Shift+I) for errors.
+  
+  **Solution:**
+  
+  ```
+  1. Open Developer Console (Ctrl/Cmd+Shift+I)
+  2. Look for errors starting with "QuickOpen:"
+  3. Try reloading Obsidian (Ctrl/Cmd+R)
+  4. If issue persists, disable and re-enable Quick Select
+  ```
+  
+  The plugin includes error handling to prevent scope leaks (`main.ts:100-132`), but edge cases may occur.
+</Accordion>
+
+<Accordion title="Works in some modals but not others">
+  **Expected behavior:**
+  
+  Quick Select patches two types of Obsidian UI components:
+  - **SuggestModal** - Standard modals like Quick Open, Command Palette
+  - **PopoverSuggest** - Inline suggestions like tag autocomplete, link suggestions
+  
+  **Not supported:**
+  - Custom modals that don't extend `SuggestModal` or `PopoverSuggest`
+  - Plugin-specific modals that don't use Obsidian's standard APIs
+  
+  If a specific modal doesn't work, it may be using a custom implementation that Quick Select can't automatically enhance.
+</Accordion>
+
+## Performance Considerations
+
+<Info>
+  Quick Select is designed to be lightweight and performant. It only activates when modals are open and cleans up resources when they close.
+</Info>
+
+### Performance Tips
+
+1. **Permanent counters** - Setting transition style to "permanent" adds minimal overhead
+2. **Popout windows** - Each popout window adds one set of keyboard listeners
+3. **Scope management** - The plugin maintains scope stacks to prevent memory leaks
+
+### Known Limitations
+
+- Only the first **9 items** in a modal can be selected with shortcuts
+- Group headers in suggestions are skipped (see `main.ts:160-163`)
+- Items must be visible in the list (scrolled items work, but you must scroll to them first)
+
+## Debugging
+
+### Enable Developer Console
+
+1. Press `Ctrl/Cmd + Shift + I` to open Developer Tools
+2. Go to the **Console** tab
+3. Look for messages starting with `"QuickOpen:"`
+
+### Common Error Messages
+
+| Error Message | Meaning |
+|---------------|----------|
+| `"QuickOpen: Error in SuggestModal.open"` | Failed to patch modal open |
+| `"QuickOpen: Error in SuggestModal.close"` | Failed to clean up after modal close |
+| `"QuickOpen: Failed to pop scope"` | Scope cleanup issue |
+| `"QuickOpen: Error in PopoverSuggest.open"` | Failed to patch popover |
+
+### Reporting Issues
+
+<Warning>
+  If you encounter persistent issues, please report them on GitHub with:
+  - Your Obsidian version
+  - Quick Select plugin version (currently **v1.5.1**)
+  - Operating system and version
+  - Steps to reproduce the issue
+  - Any error messages from the Developer Console
+</Warning>
+
+**Report bugs here:**  
+[https://github.com/itsonlyjames/quick-open/issues](https://github.com/itsonlyjames/quick-open/issues)
+
+## Getting Help
+
+If you need additional support:
+
+1. **Check the documentation** - Review the [Introduction](/introduction) and [Quick Start](/quickstart) guides
+2. **Search existing issues** - Your problem may already be documented
+3. **Open a new issue** - Provide detailed information and reproduction steps
+4. **Support the developer** - Consider [sponsoring on GitHub](https://github.com/sponsors/itsonlyjames)
+
+## Plugin Information
+
+- **Plugin ID:** `quick-open`
+- **Current Version:** `1.5.1`
+- **Minimum Obsidian Version:** `0.15.0`
+- **Desktop Only:** No (works on mobile)
+- **Author:** [James Alexandre](https://github.com/itsonlyjames)

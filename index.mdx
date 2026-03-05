@@ -1,97 +1,117 @@
 ---
-title: "Introduction"
-description: "Welcome to the new home for your documentation"
+title: "Quick Select"
+description: "Supercharge your Obsidian workflow with keyboard shortcuts for instant modal item selection"
 ---
 
-## Setting up
+<img
+  className="block dark:hidden"
+  src="https://raw.githubusercontent.com/itsonlyjames/obsidian-quick-select/main/docs/supercharge-your-workflow.gif"
+  alt="Quick Select in action"
+/>
+<img
+  className="hidden dark:block"
+  src="https://raw.githubusercontent.com/itsonlyjames/obsidian-quick-select/main/docs/supercharge-your-workflow.gif"
+  alt="Quick Select in action"
+/>
 
-Get your documentation site up and running in minutes.
+## Supercharge Your Workflow
 
-<Card
-  title="Start here"
-  icon="rocket"
-  href="/quickstart"
-  horizontal
->
-  Follow our three step quickstart guide.
-</Card>
+Quick Select is an Obsidian plugin that lets you instantly select items in any modal using keyboard shortcuts. Press **Mod + Number** (1-9) to quickly open files, execute commands, select tags, and more—all without touching your mouse.
 
-## Make it yours
-
-Design a docs site that looks great and empowers your users.
-
-<Columns cols={2}>
+<CardGroup cols={2}>
   <Card
-    title="Edit locally"
-    icon="pen-to-square"
-    href="/development"
+    title="Get Started"
+    icon="rocket"
+    href="/installation"
   >
-    Edit your docs locally and preview them in real time.
+    Install and start using Quick Select in minutes
   </Card>
   <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
+    title="Quick Start Guide"
+    icon="bolt"
+    href="/quickstart"
   >
-    Customize the design and colors of your site to match your brand.
-  </Card>
-    <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
+    Learn the basics and master keyboard shortcuts
   </Card>
   <Card
-    title="API documentation"
-    icon="terminal"
-    href="/api-reference/introduction"
+    title="Configuration"
+    icon="gear"
+    href="/guides/configuration"
   >
-    Auto-generate API documentation from OpenAPI specifications.
-  </Card>
-</Columns>
-
-## Create beautiful pages
-
-Everything you need to create world-class documentation.
-
-<Columns cols={2}>
-  <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
-  >
-    Use MDX to style your docs pages.
+    Customize modifier keys and transition styles
   </Card>
   <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
+    title="View on GitHub"
+    icon="github"
+    href="https://github.com/itsonlyjames/obsidian-quick-select"
   >
-    Add sample code to demonstrate how to use your product.
+    Star the project and contribute
+  </Card>
+</CardGroup>
+
+## Key Features
+
+<CardGroup cols={3}>
+  <Card title="Universal Modal Support" icon="window">
+    Works with Quick Switcher, Command Palette, Search, Tags, and all Obsidian modals
+  </Card>
+  <Card title="Customizable Keys" icon="keyboard">
+    Choose between Meta/Cmd, Ctrl, or Alt as your modifier key
+  </Card>
+  <Card title="Visual Feedback" icon="eye">
+    Multiple counter transition styles: None, Fade, Slide, or Permanent
+  </Card>
+  <Card title="Popout Windows" icon="browser">
+    Full support for Obsidian popout windows
+  </Card>
+  <Card title="Smart Filtering" icon="filter">
+    Intelligently filters out group items from selection
+  </Card>
+  <Card title="Lightweight" icon="feather">
+    Minimal performance impact on your Obsidian workflow
+  </Card>
+</CardGroup>
+
+## How It Works
+
+Quick Select adds numbered counters (1-9) to items in Obsidian modals. When you press the modifier key, the counters appear, allowing you to instantly select an item by pressing its corresponding number.
+
+<Steps>
+  <Step title="Open any modal">
+    Use Quick Switcher (Cmd/Ctrl+O), Command Palette (Cmd/Ctrl+P), or any other Obsidian modal
+  </Step>
+  <Step title="Press modifier key">
+    Hold down your configured modifier key (default: Cmd on Mac, Ctrl on Windows/Linux)
+  </Step>
+  <Step title="Select with number">
+    Press a number key (1-9) to instantly select that item
+  </Step>
+</Steps>
+
+## Keyboard Shortcuts
+
+<Note>
+  **Mod Key** is **Cmd** on macOS and **Ctrl** on Windows/Linux by default. You can customize this in settings.
+</Note>
+
+- **Mod + 1-9** — Select items 1 through 9 in any modal
+- Works in: Quick Switcher, Command Palette, Search, Tags, Slash Commands, and more
+
+## Getting Started
+
+<CardGroup cols={2}>
+  <Card
+    title="Installation"
+    icon="download"
+    href="/installation"
+  >
+    Install from Obsidian Community Plugins or manually
   </Card>
   <Card
-    title="Images"
-    icon="image"
-    href="/essentials/images"
+    title="Basic Usage"
+    icon="circle-play"
+    href="/guides/basic-usage"
   >
-    Display images and other media.
+    Learn how to use Quick Select in different modals
   </Card>
-  <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
-  >
-    Write once and reuse across your docs.
-  </Card>
-</Columns>
-
-## Need inspiration?
-
-<Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
->
-  Browse our showcase of exceptional documentation sites.
-</Card>
+</CardGroup>

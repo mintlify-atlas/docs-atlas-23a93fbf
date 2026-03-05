@@ -1,0 +1,89 @@
+---
+title: Settings Reference
+description: Complete settings API documentation for Quick Select
+---
+
+## QuickOpenSettings Interface
+
+The Quick Select plugin exposes two configurable settings through the `QuickOpenSettings` interface.
+
+```typescript
+export interface QuickOpenSettings {
+  modifierKey: modOptions;
+  transitionStyle: transitionOptions;
+}
+
+type modOptions = "metaKey" | "ctrlKey" | "altKey";
+type transitionOptions = "none" | "fade" | "slide" | "permanent";
+```
+
+## Settings
+
+<ParamField path="modifierKey" type="modOptions" default="metaKey">
+  The keyboard modifier key used to activate Quick Select shortcuts.
+  
+  **Options:**
+  - `"metaKey"` - Meta key (⌘ on macOS, ⊞ Win on Windows)
+  - `"ctrlKey"` - Control key (Ctrl)
+  - `"altKey"` - Alt key (Alt/Option)
+  
+  **Default:** `"metaKey"`
+  
+  This setting determines which modifier key you hold down in combination with number keys (1-9) to quickly select items in modals.
+</ParamField>
+
+<ParamField path="transitionStyle" type="transitionOptions" default="slide">
+  The visual transition style for Quick Select number counters.
+  
+  **Options:**
+  - `"none"` - No transition, counters appear/disappear instantly
+  - `"fade"` - Counters fade in and out smoothly
+  - `"slide"` - Counters slide in with animation
+  - `"permanent"` - Counters remain visible at all times
+  
+  **Default:** `"slide"`
+  
+  This setting controls how the numbered counters appear when you hold down the modifier key. The `"permanent"` option is useful if you want counters always visible without holding a key.
+</ParamField>
+
+## Default Settings
+
+The plugin initializes with these default values:
+
+```typescript
+export const DEFAULT_SETTINGS: QuickOpenSettings = {
+  modifierKey: "metaKey",
+  transitionStyle: "slide",
+};
+```
+
+## Platform-Specific Behavior
+
+<Note>
+  The `metaKey` setting maps to different physical keys depending on your platform:
+  - **macOS:** Command key (⌘)
+  - **Windows:** Windows key (⊞)
+  - **Linux:** Super key
+</Note>
+
+<Info>
+  Settings are stored in Obsidian's plugin data directory and persist across sessions. Changes take effect immediately without requiring a restart.
+</Info>
+
+## Accessing Settings
+
+To configure Quick Select:
+
+1. Open Obsidian Settings
+2. Navigate to **Community plugins**
+3. Find **Quick Select** in the plugin list
+4. Click the gear icon or select the plugin to access settings
+
+## Implementation Details
+
+The settings are implemented in `src/settings.ts:6-14` and managed by the `QuickOpenSettingTab` class. When you change the modifier key, the plugin updates keyboard event listeners to respond to the new key. When you change the transition style, the plugin applies CSS classes to `document.body` to control the visual behavior:
+
+```typescript
+// Transition classes applied: quick-select-transition-{transitionStyle}
+document.body.classList.add(`quick-select-transition-${value}`);
+```

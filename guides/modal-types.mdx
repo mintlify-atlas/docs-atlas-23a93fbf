@@ -1,0 +1,211 @@
+---
+title: "Modal Types"
+description: "Complete guide to using Quick Select across all Obsidian modal types"
+---
+
+## Supported Modals
+
+Quick Select works seamlessly across all Obsidian modals. Here's a comprehensive guide to using it in different contexts.
+
+<CardGroup cols={2}>
+  <Card title="Quick Switcher" icon="magnifying-glass">
+    Navigate files instantly with keyboard shortcuts
+  </Card>
+  <Card title="Command Palette" icon="terminal">
+    Execute commands without scrolling
+  </Card>
+  <Card title="Search Modal" icon="search">
+    Jump to search results quickly
+  </Card>
+  <Card title="Tag Suggestions" icon="tag">
+    Select tags with speed
+  </Card>
+</CardGroup>
+
+## Quick Switcher
+
+The Quick Switcher is one of the most-used modals in Obsidian. Quick Select makes it even more powerful.
+
+### Usage
+
+1. Open Quick Switcher: `Cmd/Ctrl + O`
+2. Start typing to filter files (optional)
+3. Hold `Cmd/Ctrl` to see numbered items
+4. Press `1-9` to open that file
+
+### Example Workflow
+
+<Tabs>
+  <Tab title="Recent Files">
+    ```plaintext
+    1. Press Cmd+O
+    2. Recent files appear at top
+    3. Cmd+1 opens most recent file instantly
+    ```
+  </Tab>
+  
+  <Tab title="Filtered Search">
+    ```plaintext
+    1. Press Cmd+O
+    2. Type "project" to filter
+    3. Cmd+3 opens third matching file
+    ```
+  </Tab>
+</Tabs>
+
+<Tip>
+  Leave the search empty to quickly access your most recent files using Quick Select.
+</Tip>
+
+## Command Palette
+
+The Command Palette provides access to all Obsidian commands and plugin commands.
+
+### Usage
+
+1. Open Command Palette: `Cmd/Ctrl + P`
+2. Type to search commands
+3. Hold `Cmd/Ctrl` + number to execute
+
+### Common Use Cases
+
+<Accordion title="Workspace Management">
+  Quickly switch workspaces:
+  
+  1. `Cmd/Ctrl + P`
+  2. Type "workspace"
+  3. `Cmd/Ctrl + 1` to load first workspace
+  
+  ![Hot Swap Workspaces](https://raw.githubusercontent.com/itsonlyjames/obsidian-quick-select/main/docs/supercharge-your-workflow-workspaces.gif)
+</Accordion>
+
+<Accordion title="Template Insertion">
+  Insert templates without clicking:
+  
+  1. `Cmd/Ctrl + P`
+  2. Type "template"
+  3. `Cmd/Ctrl + [number]` to insert template
+</Accordion>
+
+<Accordion title="Plugin Commands">
+  Execute any plugin command:
+  
+  1. `Cmd/Ctrl + P`
+  2. Type plugin name
+  3. Select command with number key
+</Accordion>
+
+## Search Modal
+
+The Search modal shows all occurrences of text across your vault.
+
+### Usage
+
+1. Open Search: `Cmd/Ctrl + Shift + F`
+2. Enter search query
+3. Hold `Cmd/Ctrl` + number to jump to result
+
+### Example
+
+![Quick Select Search Items](https://raw.githubusercontent.com/itsonlyjames/obsidian-quick-select/main/docs/quick-select-search.gif)
+
+<Note>
+  Search results can be navigated instantly, making it easy to review multiple matches across different files.
+</Note>
+
+## Tags (Frontmatter/Inline)
+
+Quick Select works with both frontmatter tags and inline tag suggestions.
+
+### Inline Tags
+
+1. Type `#` in your note
+2. Tag suggestions appear
+3. Hold `Cmd/Ctrl` to see numbers
+4. Press number to insert tag
+
+### Frontmatter Tags
+
+1. In frontmatter, add `tags:` field
+2. Start typing tag name
+3. Hold `Cmd/Ctrl` + number to select
+
+### Example
+
+![Quick Select Tags (Frontmatter/Inline)](https://raw.githubusercontent.com/itsonlyjames/obsidian-quick-select/main/docs/quick-select-tags.gif)
+
+<Tip>
+  Use Quick Select with tags to maintain consistent tagging without needing to type full tag names.
+</Tip>
+
+## Slash Commands
+
+Slash commands provide quick access to formatting and insertion options.
+
+### Usage
+
+1. Type `/` in editor
+2. Slash command menu appears
+3. Hold `Cmd/Ctrl` + number to select
+
+### Example
+
+![Supercharge your slash commands](https://raw.githubusercontent.com/itsonlyjames/obsidian-quick-select/main/docs/supercharge-your-slash-commands.gif)
+
+### Common Slash Commands
+
+- **Templates**: `/template` → `Cmd/Ctrl + 1`
+- **Callouts**: `/callout` → `Cmd/Ctrl + [number]`
+- **Code blocks**: `/code` → `Cmd/Ctrl + 1`
+- **Tables**: `/table` → `Cmd/Ctrl + 1`
+
+## Other Modal Types
+
+Quick Select works in many other contexts:
+
+### File/Link Suggestions
+
+- Internal link autocomplete (`[[`)
+- File embed suggestions (`![[`)
+- Alias suggestions
+
+### Plugin Modals
+
+Quick Select automatically works with plugin modals that use Obsidian's standard suggestion interface, including:
+
+- Dataview query results
+- Quick Switcher++ enhanced results
+- Various plugin command palettes
+
+### Technical Details
+
+Quick Select patches two Obsidian modal types:
+
+<Tabs>
+  <Tab title="SuggestModal">
+    Used for full-screen modals like Quick Switcher and Command Palette.
+    
+    The plugin registers hotkeys (Mod+1 through Mod+9) that select items by index.
+  </Tab>
+  
+  <Tab title="PopoverSuggest">
+    Used for inline popovers like tag suggestions and link autocomplete.
+    
+    Handles group items specially to ensure accurate numbering.
+  </Tab>
+</Tabs>
+
+<Note>
+  Quick Select works with modals in both the main Obsidian window and popout windows.
+</Note>
+
+## General Workflow
+
+Regardless of modal type, the pattern is always:
+
+1. **Open modal** (any method)
+2. **Filter results** (optional typing)
+3. **Hold modifier** (see numbers appear)
+4. **Press number** (instant selection)
+
+This consistent behavior makes Quick Select intuitive across all Obsidian features.

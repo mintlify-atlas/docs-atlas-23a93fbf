@@ -1,0 +1,70 @@
+---
+title: "Introduction"
+description: "Quickly select items in any Obsidian modal using keyboard shortcuts"
+---
+
+## What is Quick Select?
+
+Quick Select is an Obsidian plugin that supercharges your workflow by allowing you to instantly select items in any modal using keyboard shortcuts. Instead of navigating through lists with arrow keys or reaching for your mouse, simply press `Mod + 1-9` to select the item you want.
+
+<Info>
+**Mod Key** refers to `Cmd` on macOS and `Ctrl` on Windows/Linux.
+</Info>
+
+## Key Features
+
+<CardGroup cols={2}>
+  <Card title="Universal Modal Support" icon="window">
+    Works in all Obsidian modals including Quick Switcher, Command Palette, search, tags, aliases, and slash commands
+  </Card>
+  <Card title="Lightning Fast Selection" icon="bolt">
+    Select any of the first 9 items instantly with `Mod + 1-9` keyboard shortcuts
+  </Card>
+  <Card title="Customizable Modifier Key" icon="keyboard">
+    Choose between Meta (Cmd/Win), Control, or Alt as your modifier key
+  </Card>
+  <Card title="Visual Feedback" icon="eye">
+    Numbered indicators appear when you hold the modifier key, with customizable transition styles
+  </Card>
+</CardGroup>
+
+## How It Works
+
+Quick Select patches Obsidian's `SuggestModal` and `PopoverSuggest` components to add keyboard shortcuts. When you open any modal and hold your modifier key:
+
+1. **Visual indicators** (numbers 1-9) appear next to items
+2. **Press a number** to instantly select that item
+3. **Release the modifier** to see the normal modal view
+
+The plugin intelligently handles different modal types, filters out group headers in popovers, and provides smooth visual transitions.
+
+## Use Cases
+
+<Steps>
+  <Step title="Quick File Navigation">
+    Open the Quick Switcher (`Cmd/Ctrl + O`) and press `Mod + 1` to instantly open the first file in the list
+  </Step>
+  <Step title="Fast Command Execution">
+    Access the Command Palette (`Cmd/Ctrl + P`) and use `Mod + number` to execute commands without scrolling
+  </Step>
+  <Step title="Workspace Switching">
+    Quickly swap between workspaces by using Quick Select in the workspace modal
+  </Step>
+  <Step title="Tag Selection">
+    When adding frontmatter or inline tags, use `Mod + number` to select tags from the suggestion list
+  </Step>
+  <Step title="Search Navigation">
+    Browse search results and open files instantly using numbered shortcuts
+  </Step>
+</Steps>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Installation" icon="download" href="/installation">
+    Learn how to install Quick Select in your Obsidian vault
+  </Card>
+  <Card title="Quick Start" icon="rocket" href="/quickstart">
+    Get up and running with Quick Select in minutes
+  </Card>
+</CardGroup>

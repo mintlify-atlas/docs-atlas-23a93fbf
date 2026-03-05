@@ -1,0 +1,385 @@
+---
+title: "Tips and Tricks"
+description: "Master Quick Select with expert tips and workflow optimization strategies"
+---
+
+## Keyboard Efficiency
+
+Quick Select is designed to keep your hands on the keyboard. Here's how to maximize efficiency.
+
+### Keep One Hand on Modifier
+
+Develop the habit of keeping your thumb or palm near the modifier key when navigating modals.
+
+<Tabs>
+  <Tab title="macOS">
+    **Command Key Position**:
+    - Left thumb rests on Command
+    - Right hand types to filter
+    - Left hand ready to press 1-9
+    
+    This split-hand approach lets you filter and select without repositioning.
+  </Tab>
+  
+  <Tab title="Windows/Linux">
+    **Control Key Position**:
+    - Left pinky or palm on Control
+    - Use right Control for right-handed selection
+    - Practice using number row with same hand as modifier
+  </Tab>
+</Tabs>
+
+### Minimal Typing Strategy
+
+The fewer characters you type before selecting, the faster your workflow:
+
+1. **Quick Switcher**: Type 1-3 characters to narrow down
+2. **Hold modifier** to see if your target is in top 9
+3. **Press number** if found, otherwise type more
+
+<Tip>
+  With proper file naming conventions, you can often access files with just 2-3 characters + Quick Select.
+</Tip>
+
+## Workflow Patterns
+
+### Daily Note Workflow
+
+Access today's daily note instantly:
+
+1. `Cmd/Ctrl + O` (Quick Switcher)
+2. Today's note is usually #1 or #2 in recent files
+3. `Cmd/Ctrl + 1` to open
+
+**Pro tip**: If you work in daily notes consistently, they'll always be at the top.
+
+### Project File Navigation
+
+Navigate project files without folder browsing:
+
+<Steps>
+  <Step title="Establish naming convention">
+    Prefix project files: `proj-name-feature`
+  </Step>
+  
+  <Step title="Quick Switcher + filter">
+    Type project prefix: `proj-name`
+  </Step>
+  
+  <Step title="Quick Select">
+    Use `Cmd/Ctrl + 1-9` to jump between project files
+  </Step>
+</Steps>
+
+### Template Insertion Speed Run
+
+1. Create command palette shortcut: `Cmd/Ctrl + P`
+2. Type "temp" (or your template prefix)
+3. Templates filter to top positions
+4. `Cmd/Ctrl + [number]` inserts instantly
+
+<Note>
+  This works for any frequently-used command. Learn which number your favorite commands occupy after filtering.
+</Note>
+
+## Workspace Management
+
+Quick Select excels at workspace switching:
+
+### Hot-Swapping Workspaces
+
+1. **Setup**: Name workspaces clearly (e.g., "Writing", "Research", "Coding")
+2. **Switching**: 
+   - `Cmd/Ctrl + P`
+   - Type "work" (filters to workspace commands)
+   - `Cmd/Ctrl + [number]` to load workspace
+
+### Context Switching Pattern
+
+<Accordion title="Writing to Research Switch">
+  **Scenario**: You're writing and need to check research notes.
+  
+  1. `Cmd/Ctrl + P`
+  2. Type "research" (workspace name)
+  3. `Cmd/Ctrl + 1` loads research workspace
+  4. Do research
+  5. `Cmd/Ctrl + P` → "writing" → `Cmd/Ctrl + 1` back to writing
+</Accordion>
+
+<Accordion title="Project-Based Workspaces">
+  **Setup**: Create workspace per project.
+  
+  **Daily workflow**:
+  - Morning: Load "Project A" workspace (`Cmd+P` → "proja" → `Cmd+1`)
+  - Afternoon: Switch to "Project B" workspace
+  - Evening: Load "Personal" workspace
+  
+  Each workspace has relevant files and layout ready.
+</Accordion>
+
+## Search Optimization
+
+### Multi-Result Review
+
+When searching vault-wide:
+
+1. `Cmd/Ctrl + Shift + F` (Search)
+2. Enter search term
+3. Use Quick Select to rapidly review results:
+   - `Cmd/Ctrl + 1` opens first match
+   - `Cmd/Ctrl + Shift + F` back to search
+   - `Cmd/Ctrl + 2` opens second match
+   - Repeat as needed
+
+### Search + Quick Select Combo
+
+<CodeGroup>
+```plaintext Pattern 1: Broad to Narrow
+1. Search broad term
+2. Review top results with Quick Select
+3. Refine search if needed
+4. Quick Select again on refined results
+```
+
+```plaintext Pattern 2: Multi-File Edit
+1. Search for text to change
+2. Use Quick Select to open each file
+3. Make edits
+4. Back to search for next file
+```
+</CodeGroup>
+
+## Tag Management
+
+### Consistent Tagging
+
+Use Quick Select to maintain tag consistency:
+
+1. Type `#` in note
+2. Start typing tag (shows existing tags)
+3. Quick Select existing tag instead of typing new variant
+
+**Result**: Avoids tag variations like `#project` vs `#Project` vs `#projects`
+
+### Bulk Tagging Workflow
+
+<Steps>
+  <Step title="Create tag list">
+    Maintain a note with your tag taxonomy
+  </Step>
+  
+  <Step title="Fast tagging">
+    When tagging notes:
+    - `#` triggers suggestions
+    - First few letters filter
+    - Quick Select inserts correct tag
+  </Step>
+  
+  <Step title="Frontmatter speed">
+    In frontmatter `tags:` array:
+    - Start typing tag
+    - Quick Select from suggestions
+    - Much faster than typing full names
+  </Step>
+</Steps>
+
+## Command Palette Mastery
+
+### Learn Your Numbers
+
+Frequently-used commands occupy consistent positions after filtering:
+
+<Tabs>
+  <Tab title="Common Commands">
+    Learn which number key your favorite commands occupy:
+    
+    - "toggle" → `Cmd+1` (Toggle reading mode)
+    - "split" → `Cmd+1` or `Cmd+2` (Split directions)
+    - "workspace" → `Cmd+1-4` (Your workspaces)
+  </Tab>
+  
+  <Tab title="Plugin Commands">
+    Plugin commands group together:
+    
+    - Type plugin name
+    - Commands appear in consistent order
+    - Memorize number positions for frequent actions
+  </Tab>
+</Tabs>
+
+### Command Palette Shortcuts
+
+<CardGroup cols={2}>
+  <Card title="Quick Toggle" icon="toggle-on">
+    `Cmd+P` → "tog" → `Cmd+1`
+    
+    Toggle reading mode instantly
+  </Card>
+  
+  <Card title="Split Pane" icon="split">
+    `Cmd+P` → "split" → `Cmd+1/2`
+    
+    Split editor direction of choice
+  </Card>
+  
+  <Card title="Insert Template" icon="file-import">
+    `Cmd+P` → "temp" → `Cmd+[num]`
+    
+    Insert any template with minimal typing
+  </Card>
+  
+  <Card title="Load Workspace" icon="folder">
+    `Cmd+P` → "work" → `Cmd+[num]`
+    
+    Switch contexts instantly
+  </Card>
+</CardGroup>
+
+## Advanced Techniques
+
+### Chaining Quick Select Actions
+
+Perform complex workflows with rapid Quick Select chains:
+
+<Accordion title="Template + Tag + Link Workflow">
+  1. **Insert template**: `Cmd+P` → "temp" → `Cmd+1`
+  2. **Add tag**: `#` → type → `Cmd+[num]`
+  3. **Link note**: `[[` → type → `Cmd+[num]`
+  
+  Complete in seconds what used to take minutes.
+</Accordion>
+
+<Accordion title="Multi-File Quick Review">
+  **Goal**: Review several files quickly.
+  
+  1. `Cmd+O` (Quick Switcher)
+  2. Type filter
+  3. `Cmd+1` opens first file
+  4. Review content
+  5. `Cmd+W` closes file
+  6. Repeat with `Cmd+O` → `Cmd+2`, etc.
+</Accordion>
+
+### Permanent Mode Strategies
+
+If you enabled permanent transition mode:
+
+<Note>
+  **Permanent mode** shows numbers always, without holding modifier.
+</Note>
+
+**Benefits**:
+- See numbers while you type (helps learning)
+- No modifier key needed (one less key to press)
+- Better for accessibility
+- Faster selection (just press number)
+
+**Best practices**:
+- Use number keys directly (no modifier needed in permanent mode)
+- Wait for the actual modifier key behavior depends on settings
+
+<Warning>
+  Actually, in permanent mode you **still need the modifier key** - the numbers are just always visible. The permanent setting only affects **visibility**, not the hotkey requirement.
+</Warning>
+
+## Troubleshooting Common Issues
+
+<AccordionGroup>
+  <Accordion title="Wrong item selected">
+    **Problem**: Pressing a number selects the wrong item.
+    
+    **Common causes**:
+    1. Counting includes modal header or group labels
+    2. Modal updated while modifier was held
+    3. Pressed number before modal fully loaded
+    
+    **Solution**: Release and re-press modifier to refresh counter view.
+  </Accordion>
+  
+  <Accordion title="Muscle memory conflicts">
+    **Problem**: Other shortcuts conflict with Quick Select.
+    
+    **Examples**:
+    - `Cmd/Ctrl + 1-9` for browser tabs
+    - System shortcuts on Linux
+    
+    **Solutions**:
+    1. Change Quick Select modifier to `Alt`
+    2. Disable conflicting shortcuts
+    3. Use context-aware approach (Quick Select only works in modals)
+  </Accordion>
+  
+  <Accordion title="Can't reach number keys">
+    **Problem**: Keyboard layout makes number row hard to reach.
+    
+    **Solutions**:
+    1. Consider using permanent mode
+    2. Use keyboard layouts/remapping for easier number access
+    3. Quick Select supports 1-9, use items in that range
+  </Accordion>
+</AccordionGroup>
+
+## Optimization Checklist
+
+Use this checklist to maximize Quick Select efficiency:
+
+- [ ] Configured preferred modifier key
+- [ ] Chosen optimal transition style
+- [ ] Established file naming conventions
+- [ ] Created workspace shortcuts
+- [ ] Learned command palette filter patterns
+- [ ] Practiced split-hand keyboard technique
+- [ ] Set up frequently-used templates
+- [ ] Organized tags for quick selection
+- [ ] Tested Quick Select in all modal types
+- [ ] Developed muscle memory for top 9 positions
+
+## Performance Tips
+
+### Speed Considerations
+
+<CardGroup cols={2}>
+  <Card title="Transition Style" icon="gauge">
+    Use "none" or "fade" on slower machines for instant response.
+  </Card>
+  
+  <Card title="Modifier Choice" icon="keyboard">
+    Some keyboards have better modifier key placement - experiment to find most comfortable.
+  </Card>
+  
+  <Card title="File Organization" icon="folder-tree">
+    Well-named files filter into top 9 faster.
+  </Card>
+  
+  <Card title="Recent Files" icon="clock">
+    Items you use frequently stay in quick-access range.
+  </Card>
+</CardGroup>
+
+## Learning Curve Tips
+
+<Steps>
+  <Step title="Start with Quick Switcher">
+    The Quick Switcher is the easiest place to learn Quick Select. Practice here first.
+  </Step>
+  
+  <Step title="Use permanent mode while learning">
+    Enable permanent transition style to see numbers as you learn the plugin.
+  </Step>
+  
+  <Step title="Focus on top 3">
+    Don't try to use all 9 positions at first. Master selecting items 1-3.
+  </Step>
+  
+  <Step title="Expand to other modals">
+    Once comfortable with Quick Switcher, try Command Palette, then tags, then search.
+  </Step>
+  
+  <Step title="Build muscle memory">
+    Practice the same workflows repeatedly until modifier + number becomes automatic.
+  </Step>
+</Steps>
+
+<Tip>
+  After 1-2 weeks of consistent use, Quick Select becomes second nature and you'll wonder how you worked without it.
+</Tip>

@@ -1,0 +1,126 @@
+---
+title: Keyboard Shortcuts
+description: Complete keyboard shortcut reference for Quick Select
+---
+
+## Overview
+
+Quick Select enables rapid item selection in Obsidian modals using keyboard shortcuts. Hold your configured modifier key and press a number to instantly select the corresponding item.
+
+## Modifier Key (Mod)
+
+The "Mod" key is platform-specific:
+
+| Platform | Mod Key | Physical Key |
+|----------|---------|-------------|
+| macOS | `Cmd` | Command (⌘) |
+| Windows | `Win` | Windows (⊞) |
+| Linux | `Super` | Super/Meta |
+
+<Note>
+  By default, Quick Select uses the **Meta key** (Mod), but you can customize this in settings to use **Ctrl** or **Alt** instead.
+</Note>
+
+## Quick Select Shortcuts
+
+When any modal or suggestion popup is open, the following shortcuts are available:
+
+| Shortcut | Action |
+|----------|--------|
+| `Mod + 1` | Select the 1st item in the list |
+| `Mod + 2` | Select the 2nd item in the list |
+| `Mod + 3` | Select the 3rd item in the list |
+| `Mod + 4` | Select the 4th item in the list |
+| `Mod + 5` | Select the 5th item in the list |
+| `Mod + 6` | Select the 6th item in the list |
+| `Mod + 7` | Select the 7th item in the list |
+| `Mod + 8` | Select the 8th item in the list |
+| `Mod + 9` | Select the 9th item in the list |
+
+<Info>
+  Shortcuts only work when a modal or suggestion list is open. If there are fewer than 9 items, higher number keys will have no effect.
+</Info>
+
+## How It Works
+
+1. **Open any modal** - Quick Open, command palette, file suggestions, etc.
+2. **Hold the modifier key** - Numbered counters appear next to items
+3. **Press a number** (1-9) - The corresponding item is instantly selected
+4. **Release the modifier key** - Counters disappear
+
+## Customizing the Modifier Key
+
+You can change which key activates Quick Select shortcuts:
+
+1. Open **Settings → Quick Select**
+2. Under **Modifier key**, choose:
+   - **Meta** (⌘/Win) - Default, uses Cmd on macOS, Win on Windows
+   - **Control** - Uses Ctrl key on all platforms
+   - **Alt** - Uses Alt/Option key
+
+### Example Configurations
+
+<Tabs>
+  <Tab title="Default (Meta)">
+    ```
+    Shortcuts: ⌘+1, ⌘+2, ⌘+3, ... (macOS)
+               Win+1, Win+2, Win+3, ... (Windows)
+    ```
+  </Tab>
+  <Tab title="Control">
+    ```
+    Shortcuts: Ctrl+1, Ctrl+2, Ctrl+3, ... (all platforms)
+    ```
+  </Tab>
+  <Tab title="Alt">
+    ```
+    Shortcuts: Alt+1, Alt+2, Alt+3, ... (all platforms)
+               Option+1, Option+2, Option+3, ... (macOS)
+    ```
+  </Tab>
+</Tabs>
+
+## Platform Differences
+
+### macOS
+- **Mod** = Command (⌘)
+- Shortcuts feel native to macOS conventions
+- Option key can be selected as an alternative
+
+### Windows
+- **Mod** = Windows key (⊞)
+- May conflict with system shortcuts (Win+1, Win+2 switch taskbar apps)
+- **Recommendation:** Use Ctrl or Alt as modifier key on Windows
+
+### Linux
+- **Mod** = Super key (often the Windows logo key)
+- Behavior varies by desktop environment
+- Ctrl or Alt provide more consistent behavior
+
+<Warning>
+  On Windows, using the Meta (Windows) key may conflict with system shortcuts. Consider switching to **Ctrl** or **Alt** in settings if you experience conflicts.
+</Warning>
+
+## Scope Registration
+
+Quick Select registers keyboard shortcuts dynamically when modals open. The implementation uses Obsidian's `Scope` API to ensure shortcuts only work in the appropriate context:
+
+```typescript
+// From main.ts:84-96
+for (let i = 1; i <= 9; i++) {
+  modalScope.register(
+    [getKeymapModifier()], // "Mod", "Ctrl", or "Alt"
+    i.toString(),
+    (evt) => {
+      evt.preventDefault();
+      const idx = i - 1;
+      if (!this.chooser?.values || idx >= this.chooser.values.length)
+        return;
+      this.chooser.setSelectedItem(idx, evt);
+      this.chooser.useSelectedItem?.(evt);
+    },
+  );
+}
+```
+
+This ensures shortcuts are automatically cleaned up when modals close and don't interfere with normal Obsidian operation.

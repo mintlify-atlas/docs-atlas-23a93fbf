@@ -1,80 +1,211 @@
 ---
-title: "Quickstart"
-description: "Start building awesome documentation in minutes"
+title: "Quick Start"
+description: "Get started with Quick Select and learn the basics"
 ---
 
-## Get started in three steps
+## Basic Usage
 
-Get your documentation site running locally and make your first customization.
+Quick Select adds keyboard shortcuts to all Obsidian modals, allowing you to select items 1-9 instantly.
 
-### Step 1: Set up your local environment
+<Info>
+The default modifier key is:
+- **macOS**: `Cmd` (Command key)
+- **Windows/Linux**: `Ctrl` (Control key)
+</Info>
 
-<AccordionGroup>
-  <Accordion icon="copy" title="Clone your docs locally">
-    During the onboarding process, you created a GitHub repository with your docs content if you didn't already have one. You can find a link to this repository in your [dashboard](https://dashboard.mintlify.com).
-    
-    To clone the repository locally so that you can make and preview changes to your docs, follow the [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) guide in the GitHub docs.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Start the preview server">
-    1. Install the Mintlify CLI: `npm i -g mint`
-    2. Navigate to your docs directory and run: `mint dev`
-    3. Open `http://localhost:3000` to see your docs live!
-    
-    <Tip>Your preview updates automatically as you edit files.</Tip>
-  </Accordion>
-</AccordionGroup>
+## Your First Quick Select
 
-### Step 2: Deploy your changes
+Let's try Quick Select with the Quick Switcher:
 
-<AccordionGroup>
-  <Accordion icon="github" title="Install our GitHub app">
-    Install the Mintlify GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app).
-    
-    Our GitHub app automatically deploys your changes to your docs site, so you don't need to manage deployments yourself.
-</Accordion>
-<Accordion icon="palette" title="Update your site name and colors">
-    For a first change, let's update the name and colors of your docs site.
+<Steps>
+  <Step title="Open the Quick Switcher">
+    Press `Cmd/Ctrl + O` to open the Quick Switcher modal
+  </Step>
+  <Step title="Hold the Modifier Key">
+    Hold down `Cmd` (macOS) or `Ctrl` (Windows/Linux)
+  </Step>
+  <Step title="See the Numbers">
+    Numbered indicators (1-9) will appear next to the first nine items
+  </Step>
+  <Step title="Select an Item">
+    While still holding the modifier key, press a number (1-9) to instantly open that file
+  </Step>
+</Steps>
 
-    1. Open `docs.json` in your editor.
-    2. Change the `"name"` field to your project name.
-    3. Update the `"colors"` to match your brand.
-    4. Save and see your changes instantly at `http://localhost:3000`.
+## Keyboard Shortcuts
 
-    <Tip>Try changing the primary color to see an immediate difference!</Tip>
-  </Accordion>
-</AccordionGroup>
+Quick Select uses a simple modifier + number pattern:
 
-### Step 3: Go live
-
-<Accordion icon="rocket" title="Publish your docs">
-  1. Commit and push your changes.
-  2. Your docs will update and be live in moments!
-</Accordion>
-
-## Next steps
-
-Now that you have your docs running, explore these key features:
-
-<CardGroup cols={2}>
-
-<Card title="Write Content" icon="pen-to-square" href="/essentials/markdown">
-  Learn MDX syntax and start writing your documentation.
-</Card>
-
-<Card title="Customize style" icon="palette" href="/essentials/settings">
-  Make your docs match your brand perfectly.
-</Card>
-
-<Card title="Add code examples" icon="square-code" href="/essentials/code">
-  Include syntax-highlighted code blocks.
-</Card>
-
-<Card title="API documentation" icon="code" href="/api-reference/introduction">
-  Auto-generate API docs from OpenAPI specs.
-</Card>
-
-</CardGroup>
+| Shortcut | Action |
+|----------|--------|
+| `Mod + 1` | Select the 1st item |
+| `Mod + 2` | Select the 2nd item |
+| `Mod + 3` | Select the 3rd item |
+| `Mod + 4` | Select the 4th item |
+| `Mod + 5` | Select the 5th item |
+| `Mod + 6` | Select the 6th item |
+| `Mod + 7` | Select the 7th item |
+| `Mod + 8` | Select the 8th item |
+| `Mod + 9` | Select the 9th item |
 
 <Note>
-  **Need help?** See our [full documentation](https://mintlify.com/docs) or join our [community](https://mintlify.com/community).
+**Mod** represents `Cmd` on macOS and `Ctrl` on Windows/Linux.
 </Note>
+
+## Common Use Cases
+
+### Quick Switcher
+
+Navigate to files quickly:
+
+<Steps>
+  <Step title="Open Quick Switcher">
+    Press `Cmd/Ctrl + O`
+  </Step>
+  <Step title="Type to filter (optional)">
+    Start typing to filter files
+  </Step>
+  <Step title="Quick select">
+    Hold `Mod` and press a number to open that file
+  </Step>
+</Steps>
+
+### Command Palette
+
+Execute commands without scrolling:
+
+<Steps>
+  <Step title="Open Command Palette">
+    Press `Cmd/Ctrl + P`
+  </Step>
+  <Step title="Search for command (optional)">
+    Type to filter commands
+  </Step>
+  <Step title="Execute instantly">
+    Hold `Mod` and press a number to execute that command
+  </Step>
+</Steps>
+
+### Tag Selection
+
+Add tags faster when writing:
+
+<Steps>
+  <Step title="Start typing a tag">
+    Type `#` followed by the beginning of a tag name to open the tag suggester
+  </Step>
+  <Step title="Quick select tag">
+    Hold `Mod` and press a number to select that tag
+  </Step>
+</Steps>
+
+### Search Results
+
+Navigate search results efficiently:
+
+<Steps>
+  <Step title="Perform a search">
+    Use the search feature to find notes
+  </Step>
+  <Step title="Quick select result">
+    Hold `Mod` and press a number to jump to that result
+  </Step>
+</Steps>
+
+### Slash Commands
+
+When editing notes:
+
+<Steps>
+  <Step title="Type slash command">
+    Type `/` in the editor to open the slash command menu
+  </Step>
+  <Step title="Quick insert">
+    Hold `Mod` and press a number to insert that block/command
+  </Step>
+</Steps>
+
+## Settings Configuration
+
+Customize Quick Select to match your workflow:
+
+<Steps>
+  <Step title="Open Settings">
+    Go to Settings → Community plugins → Quick Select (click the gear icon)
+  </Step>
+  <Step title="Choose Modifier Key">
+    Select your preferred modifier key:
+    - **Meta** (default): `Cmd` on macOS, `Win` on Windows
+    - **Control**: `Ctrl` key on all platforms
+    - **Alt**: `Alt/Option` key on all platforms
+  </Step>
+  <Step title="Set Transition Style">
+    Choose how the numbered indicators appear:
+    - **Slide** (default): Smooth slide-in animation
+    - **Fade**: Fade-in animation
+    - **None**: Instant appearance
+    - **Permanent**: Always visible when modal is open
+  </Step>
+</Steps>
+
+<Warning>
+Changing the modifier key will affect all Quick Select shortcuts. Choose a modifier that doesn't conflict with your other workflows.
+</Warning>
+
+## Tips and Tricks
+
+<CardGroup cols={2}>
+  <Card title="Filter First, Select Fast" icon="filter">
+    Type a few characters to narrow down the list, then use Quick Select on the filtered results
+  </Card>
+  <Card title="Muscle Memory" icon="brain">
+    After using Quick Select regularly, you'll develop muscle memory for frequently accessed files and commands
+  </Card>
+  <Card title="Workspace Switching" icon="layer-group">
+    Use Quick Select with the workspace switcher to instantly change your layout
+  </Card>
+  <Card title="Combine with Other Plugins" icon="puzzle-piece">
+    Quick Select works with modals from other plugins that use Obsidian's standard modal components
+  </Card>
+</CardGroup>
+
+## Troubleshooting
+
+### Numbers Don't Appear
+
+<Steps>
+  <Step title="Check Plugin Status">
+    Ensure Quick Select is enabled in Settings → Community plugins
+  </Step>
+  <Step title="Verify Modifier Key">
+    Make sure you're holding the correct modifier key (check plugin settings)
+  </Step>
+  <Step title="Restart Obsidian">
+    Try closing and reopening Obsidian
+  </Step>
+</Steps>
+
+### Keyboard Shortcut Conflicts
+
+If Quick Select shortcuts conflict with other plugins:
+
+1. Go to Quick Select settings
+2. Change the modifier key to Alt or Control
+3. Test the new modifier to ensure it works
+
+### Numbers Appear but Don't Work
+
+- The modal might not have focus - click inside the modal first
+- Some custom modals from third-party plugins may not be compatible
+- Check the console (Cmd/Ctrl + Shift + I) for errors
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Configuration Guide" icon="gear" href="/guides/configuration">
+    Deep dive into customization options and advanced settings
+  </Card>
+  <Card title="Tips and Tricks" icon="wand-magic-sparkles" href="/guides/tips-and-tricks">
+    Learn advanced techniques and workflows
+  </Card>
+</CardGroup>

@@ -1,0 +1,120 @@
+---
+title: "Installation"
+description: "Install Quick Select in your Obsidian vault"
+---
+
+## Requirements
+
+<Info>
+Quick Select requires **Obsidian v0.15.0** or later and works on desktop and mobile devices.
+</Info>
+
+## Method 1: Community Plugins (Recommended)
+
+The easiest way to install Quick Select is through Obsidian's Community Plugins browser.
+
+<Steps>
+  <Step title="Open Obsidian Settings">
+    Click the settings icon (⚙️) in the bottom-left corner or press `Cmd/Ctrl + ,`
+  </Step>
+  <Step title="Navigate to Community Plugins">
+    In the settings sidebar, click **Community plugins**
+  </Step>
+  <Step title="Disable Safe Mode (if needed)">
+    If safe mode is enabled, click **Turn on community plugins** to disable it
+  </Step>
+  <Step title="Browse Community Plugins">
+    Click the **Browse** button to open the community plugins browser
+  </Step>
+  <Step title="Search for Quick Select">
+    Search for "Quick Select" in the search bar
+  </Step>
+  <Step title="Install the Plugin">
+    Click **Install** on the Quick Select plugin by James Alexandre
+  </Step>
+  <Step title="Enable the Plugin">
+    After installation completes, click **Enable** to activate Quick Select
+  </Step>
+</Steps>
+
+## Method 2: Manual Installation
+
+### Using BRAT (Beta Reviewers Auto-update Tester)
+
+<Note>
+BRAT is useful for installing beta versions or plugins not yet in the community store.
+</Note>
+
+<Steps>
+  <Step title="Install BRAT">
+    First, install the BRAT plugin from the Community Plugins browser
+  </Step>
+  <Step title="Add Quick Select">
+    Open BRAT settings and click **Add Beta Plugin**
+  </Step>
+  <Step title="Enter Repository URL">
+    Paste the repository URL: `https://github.com/itsonlyjames/obsidian-quick-select`
+  </Step>
+  <Step title="Enable the Plugin">
+    Go to Settings → Community plugins and enable Quick Select
+  </Step>
+</Steps>
+
+### Manual File Installation
+
+<Steps>
+  <Step title="Download the Latest Release">
+    Visit the [Quick Select releases page](https://github.com/itsonlyjames/obsidian-quick-select/releases) and download the latest `main.js` and `manifest.json` files
+  </Step>
+  <Step title="Locate Your Vault">
+    Open your vault folder in your file system
+  </Step>
+  <Step title="Navigate to Plugins Directory">
+    Go to `.obsidian/plugins/` (create the `plugins` folder if it doesn't exist)
+  </Step>
+  <Step title="Create Plugin Folder">
+    Create a new folder named `quick-open` inside the plugins directory
+  </Step>
+  <Step title="Copy Files">
+    Place the downloaded `main.js` and `manifest.json` files into the `quick-open` folder
+  </Step>
+  <Step title="Restart Obsidian">
+    Close and reopen Obsidian to detect the new plugin
+  </Step>
+  <Step title="Enable the Plugin">
+    Go to Settings → Community plugins and enable Quick Select
+  </Step>
+</Steps>
+
+<Warning>
+Ensure the folder name matches the plugin ID: `quick-open` (not `quick-select` or `obsidian-quick-select`).
+</Warning>
+
+## Post-Installation Verification
+
+After installation, verify that Quick Select is working:
+
+<Steps>
+  <Step title="Open Quick Switcher">
+    Press `Cmd/Ctrl + O` to open the Quick Switcher
+  </Step>
+  <Step title="Hold the Modifier Key">
+    Hold down `Cmd` (macOS) or `Ctrl` (Windows/Linux)
+  </Step>
+  <Step title="Check for Numbers">
+    You should see numbered indicators (1-9) appear next to the first nine items in the list
+  </Step>
+  <Step title="Test Selection">
+    While holding the modifier key, press a number (1-9) to select that item
+  </Step>
+</Steps>
+
+<Note>
+If you don't see the numbered indicators, check that the plugin is enabled in Settings → Community plugins.
+</Note>
+
+## Next Steps
+
+<Card title="Quick Start Guide" icon="rocket" href="/quickstart">
+  Learn how to use Quick Select and customize your settings
+</Card>

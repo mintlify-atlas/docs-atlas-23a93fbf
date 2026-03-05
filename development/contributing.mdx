@@ -1,0 +1,202 @@
+---
+title: "Contributing"
+description: "Help make Quick Select better for everyone"
+---
+
+## Welcome Contributors!
+
+Thank you for your interest in contributing to Quick Select! This plugin helps Obsidian users supercharge their workflow by quickly selecting items in any modal using keyboard shortcuts.
+
+We welcome contributions of all kinds, including bug fixes, new features, documentation improvements, and more.
+
+## Development Setup
+
+<Steps>
+  <Step title="Clone the repository">
+    ```bash
+    git clone https://github.com/itsonlyjames/obsidian-quick-select.git
+    cd obsidian-quick-select
+    ```
+  </Step>
+
+  <Step title="Install dependencies">
+    ```bash
+    npm install
+    ```
+
+    The project uses these key development dependencies:
+    - TypeScript 5.8.3
+    - esbuild 0.25.2 for building
+    - ESLint with TypeScript support
+    - Obsidian API (latest)
+  </Step>
+
+  <Step title="Start development mode">
+    ```bash
+    npm run dev
+    ```
+
+    This will watch for changes and rebuild automatically using esbuild.
+  </Step>
+</Steps>
+
+## Build Process
+
+The project uses esbuild for fast compilation. Available scripts:
+
+<CodeGroup>
+  ```bash Development
+  npm run dev
+  ```
+
+  ```bash Production Build
+  npm run build
+  ```
+
+  ```bash Version Bump
+  npm run version
+  ```
+</CodeGroup>
+
+### Build Script Details
+
+- **`npm run dev`**: Runs esbuild in watch mode for active development
+- **`npm run build`**: Runs TypeScript type checking (no emit) and builds for production
+- **`npm run version`**: Updates version numbers in manifest.json and versions.json, then stages them for commit
+
+<Note>
+  The build process uses `esbuild.config.mjs` for bundling and produces `main.js` as the output.
+</Note>
+
+## Code Style
+
+The project maintains consistent code style using ESLint and Prettier.
+
+### ESLint Configuration
+
+The project uses `.eslintrc` with TypeScript ESLint:
+- Extends recommended ESLint and TypeScript rules
+- Parser: `@typescript-eslint/parser`
+- Key rules:
+  - Unused variables are errors (except function arguments)
+  - TypeScript comments are allowed
+  - Empty functions are permitted
+
+### Prettier Configuration
+
+Formatting is handled by `.prettierrc`:
+- **Indentation**: 2 spaces (no tabs)
+- **Quotes**: Double quotes
+- **Semicolons**: Required
+- **Line endings**: LF
+- **Trailing commas**: All
+- **Arrow function parens**: Always
+
+<Note>
+  Run your linter before submitting code to ensure it follows the project's style guidelines.
+</Note>
+
+## Testing Guidelines
+
+When contributing code:
+
+1. **Manual Testing**: Test your changes in an actual Obsidian vault
+   - Copy `main.js` and `manifest.json` to your vault's `.obsidian/plugins/quick-open/` directory
+   - Reload Obsidian and test the functionality
+
+2. **Test Multiple Scenarios**: Quick Select works across many modal types:
+   - Quick switcher
+   - Command palette
+   - Search modals
+   - Tag selection
+   - Slash commands
+   - Alias selection
+
+3. **Cross-Platform**: If possible, test on different platforms:
+   - macOS (⌘ + number)
+   - Windows (Ctrl + number)
+   - Linux (Ctrl + number)
+
+4. **Version Compatibility**: Ensure compatibility with Obsidian >= 0.15.0
+
+## Pull Request Process
+
+<Steps>
+  <Step title="Fork and create a branch">
+    Create a descriptive branch name:
+    ```bash
+    git checkout -b feature/your-feature-name
+    ```
+    or
+    ```bash
+    git checkout -b fix/bug-description
+    ```
+  </Step>
+
+  <Step title="Make your changes">
+    - Write clear, concise code
+    - Follow the existing code style
+    - Add comments for complex logic
+    - Update documentation if needed
+  </Step>
+
+  <Step title="Test thoroughly">
+    - Run `npm run build` to ensure no TypeScript errors
+    - Test in a real Obsidian vault
+    - Verify all affected modal types still work
+  </Step>
+
+  <Step title="Commit your changes">
+    Write clear commit messages:
+    ```bash
+    git add .
+    git commit -m "feat: add support for new modal type"
+    ```
+
+    Follow conventional commit format:
+    - `feat:` for new features
+    - `fix:` for bug fixes
+    - `docs:` for documentation
+    - `refactor:` for code improvements
+  </Step>
+
+  <Step title="Push and open PR">
+    ```bash
+    git push origin your-branch-name
+    ```
+
+    Open a pull request on GitHub with:
+    - Clear description of changes
+    - Why the change is needed
+    - Any testing you performed
+    - Screenshots/GIFs if UI-related
+  </Step>
+</Steps>
+
+## Continuous Integration
+
+The project uses GitHub Actions for automated releases:
+- **Workflow**: `.github/workflows/release.yml`
+- **Trigger**: Pushing version tags
+- **Process**: Builds the plugin and creates GitHub releases
+- **Artifacts**: `main.js`, `manifest.json`, and `styles.css`
+
+## License
+
+This project is licensed under the **MIT License**.
+
+By contributing, you agree that your contributions will be licensed under the same MIT License. See [LICENSE.txt](https://github.com/itsonlyjames/obsidian-quick-select/blob/main/LICENSE.txt) for details.
+
+## Getting Help
+
+- **Issues**: [GitHub Issues](https://github.com/itsonlyjames/obsidian-quick-select/issues)
+- **Discussions**: For questions and ideas
+- **Sponsor**: [GitHub Sponsors](https://github.com/sponsors/itsonlyjames)
+
+## Code of Conduct
+
+Be respectful, constructive, and welcoming to all contributors. We're all here to make Quick Select better for the Obsidian community.
+
+---
+
+Thank you for contributing to Quick Select! 🚀

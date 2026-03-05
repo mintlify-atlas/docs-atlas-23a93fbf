@@ -1,0 +1,123 @@
+---
+title: "Basic Usage"
+description: "Learn how to use Quick Select to navigate Obsidian modals with keyboard shortcuts"
+---
+
+## Overview
+
+Quick Select allows you to instantly select items in any Obsidian modal by pressing a modifier key + number (1-9). This eliminates the need to arrow-key through lists or use your mouse.
+
+<Note>
+  The modifier key defaults to **Command** (macOS) or **Ctrl** (Windows/Linux), but you can customize it in settings.
+</Note>
+
+## Basic Workflow
+
+The workflow for using Quick Select is consistent across all modals:
+
+<Steps>
+  <Step title="Open any modal">
+    Open any Obsidian modal (Quick Switcher, Command Palette, Search, etc.)
+  </Step>
+  
+  <Step title="Hold modifier key">
+    Hold down your modifier key (Command/Ctrl by default)
+  </Step>
+  
+  <Step title="Press a number">
+    Press a number key (1-9) to instantly select that item
+  </Step>
+</Steps>
+
+## Visual Feedback
+
+When you hold down the modifier key, Quick Select displays numbered counters next to the first 9 items in the modal. The visual style depends on your transition setting:
+
+<Tabs>
+  <Tab title="Slide (Default)">
+    Counters slide in from the right with a smooth animation when you press the modifier key.
+  </Tab>
+  
+  <Tab title="Fade">
+    Counters fade in gracefully when you press the modifier key.
+  </Tab>
+  
+  <Tab title="Permanent">
+    Counters are always visible, no modifier key needed to see them.
+  </Tab>
+  
+  <Tab title="None">
+    Counters appear instantly without any transition animation.
+  </Tab>
+</Tabs>
+
+## Common Patterns
+
+### Quick File Navigation
+
+1. Press `Cmd/Ctrl + O` to open Quick Switcher
+2. Start typing to filter files
+3. Hold `Cmd/Ctrl` and press a number to open that file
+
+### Executing Commands
+
+1. Press `Cmd/Ctrl + P` to open Command Palette
+2. Type to search for commands
+3. Hold `Cmd/Ctrl` and press a number to execute that command
+
+### Searching Content
+
+1. Open Search modal (`Cmd/Ctrl + Shift + F`)
+2. Enter your search query
+3. Hold `Cmd/Ctrl` and press a number to jump to that result
+
+### Adding Tags
+
+When the tag suggestion popover appears:
+
+1. Start typing `#` in your note
+2. Hold `Cmd/Ctrl` to see numbered tags
+3. Press a number to insert that tag
+
+## Keyboard Shortcuts Reference
+
+| Platform | Modifier Key | Action |
+|----------|--------------|--------|
+| macOS | `Command + 1-9` | Select item 1-9 |
+| Windows/Linux | `Ctrl + 1-9` | Select item 1-9 |
+
+<Tip>
+  Quick Select works with numbers 1-9, giving you instant access to the top 9 results in any modal.
+</Tip>
+
+## Example Scenarios
+
+### Scenario 1: Switching Between Recent Files
+
+You're working on a project and need to quickly jump between files:
+
+1. Press `Cmd/Ctrl + O` for Quick Switcher
+2. Your recent files appear at the top
+3. Hold `Cmd/Ctrl + 1` to open the most recent file
+4. No typing required!
+
+### Scenario 2: Using Slash Commands
+
+You're writing a note and want to insert a template:
+
+1. Type `/` to open slash commands
+2. Type "template" to filter
+3. Hold `Cmd/Ctrl + 1` to select the first template
+
+### Scenario 3: Quick Search Navigation
+
+You searched for a term and want to review multiple results:
+
+1. Search results appear
+2. Use `Cmd/Ctrl + 1` for first result
+3. Press `Cmd/Ctrl + F` to return to search
+4. Use `Cmd/Ctrl + 2` for second result
+
+<Note>
+  Quick Select works in **all** Obsidian modals, including third-party plugin modals that use the standard suggestion interface.
+</Note>
